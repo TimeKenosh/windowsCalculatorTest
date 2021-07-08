@@ -73,24 +73,24 @@ public class ClassicCalculatorPO extends BasePage {
         return this;
     }
 
-    public ClassicCalculatorPO clickPlus() {
+    public ClassicCalculatorHelper clickPlus() {
         driver.findElementByAccessibilityId(ClassicCalculatorButtons.PLUS).click();
-        return this;
+        return new ClassicCalculatorHelper(driver);
     }
 
-    public ClassicCalculatorPO clickMinus() {
+    public ClassicCalculatorHelper clickMinus() {
         driver.findElementByAccessibilityId(ClassicCalculatorButtons.MINUS).click();
-        return this;
+        return new ClassicCalculatorHelper(driver);
     }
 
-    public ClassicCalculatorPO clickDivision() {
+    public ClassicCalculatorHelper clickDivision() {
         driver.findElementByAccessibilityId(ClassicCalculatorButtons.DIVISION).click();
-        return this;
+        return new ClassicCalculatorHelper(driver);
     }
 
-    public ClassicCalculatorPO clickMultiplication() {
+    public ClassicCalculatorHelper clickMultiplication() {
         driver.findElementByAccessibilityId(ClassicCalculatorButtons.MULTIPLICATION).click();
-        return this;
+        return new ClassicCalculatorHelper(driver);
     }
 
     public ClassicCalculatorPO clickRoot() {
@@ -138,11 +138,39 @@ public class ClassicCalculatorPO extends BasePage {
         return this;
     }
 
-    public ClassicCalculatorPO addTwoNumbers(String num1, String num2) {
-        clickButton(num1).
+    public String addTwoNumbers(int num1, int num2) {
+        return new ClassicCalculatorHelper(driver).
+                clickNumber(num1).
                 clickPlus().
-                clickButton(num2).
-                clickEqual();
-        return this;
+                clickNumber(num2).
+                clickEqual().
+                getResult();
+    }
+
+    public String subtractTwoNumbers(int num1, int num2) {
+        return new ClassicCalculatorHelper(driver).
+                clickNumber(num1).
+                clickMinus().
+                clickNumber(num2).
+                clickEqual().
+                getResult();
+    }
+
+    public String multiplyTwoNumbers(int num1, int num2) {
+        return new ClassicCalculatorHelper(driver).
+                clickNumber(num1).
+                clickMultiplication().
+                clickNumber(num2).
+                clickEqual().
+                getResult();
+    }
+
+    public String divideTwoNumbers(int num1, int num2) {
+        return new ClassicCalculatorHelper(driver).
+                clickNumber(num1).
+                clickDivision().
+                clickNumber(num2).
+                clickEqual().
+                getResult();
     }
 }

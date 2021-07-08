@@ -6,67 +6,39 @@ import org.testng.annotations.Test;
 
 public class StandardOperatorsTests extends BasicTest {
 
-    @Test(description = "Adding test")
-    public void addingTest() {
+    @Test(description = "Add two numbers")
+    public void addTwoNumbersTest(){
 
-        String actualResult = new ClassicCalculatorPO(CalculatorSession).
-                clickTwo().
-                clickPlus().
-                clickTwo().
-                clickEqual().
-                getResult();
-        String expectedResult = "4";
+        String actualResult = new ClassicCalculatorPO(driver).
+                addTwoNumbers(156, 371);
+        String expectedResult = "527";
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test(description = "Subtraction test")
-    public void subtractionTest(){
+    @Test(description = "Subtract two numbers")
+    public void subtractTwoNumbersTest(){
 
-        String actualResult = new ClassicCalculatorPO(CalculatorSession).
-                clickFour().
-                clickTwo().
-                clickMinus().
-                clickOne().
-                clickFive().
-                clickEqual().
-                getResult();
-        String expectedResult = "27";
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-    @Test(description = "Multiply test")
-    public void multiplyTest(){
-        String actualResult = new ClassicCalculatorPO(CalculatorSession).
-                clickSeven().
-                clickMultiplication().
-                clickSix().
-                clickEqual().
-                getResult();
-        String expectedResult = "42";
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-    @Test(description = "Divide test")
-    public void divideTest(){
-
-        String actualResult = new ClassicCalculatorPO(CalculatorSession).
-                clickEight().
-                clickZero().
-                clickDivision().
-                clickEight().
-                clickEqual().
-                getResult();
-        String expectedResult = "10";
+        String actualResult = new ClassicCalculatorPO(driver).
+                subtractTwoNumbers(500, 142);
+        String expectedResult = "358";
         Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test(description = "Add two numbers")
-    public void addTwoNumbersTest(){
+    public void multiplyTwoNumbersTest(){
 
-        String actualResult = new ClassicCalculatorPO(CalculatorSession).
-                addTwoNumbers("Один", "Шість").
-                getResult();
-        String expectedResult = "7";
+        String actualResult = new ClassicCalculatorPO(driver).
+                multiplyTwoNumbers(19, 11);
+        String expectedResult = "209";
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test(description = "Add two numbers")
+    public void divideTwoNumbersTest(){
+
+        String actualResult = new ClassicCalculatorPO(driver).
+                divideTwoNumbers(192, 3);
+        String expectedResult = "64";
         Assert.assertEquals(actualResult, expectedResult);
     }
 }

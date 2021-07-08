@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BasicTest {
 
-    protected static WindowsDriver CalculatorSession;
+    protected static WindowsDriver driver;
 
     DesiredCapabilities capabilities;
 
@@ -29,12 +29,12 @@ public class BasicTest {
     @BeforeMethod(description = "Open Windows calculator and set up")
     public void setUp() throws MalformedURLException {
 
-        CalculatorSession = new WindowsDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
-        CalculatorSession.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver = new WindowsDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @AfterMethod(description = "Close Windows calculator")
     public void cleanUp(){
-        CalculatorSession.quit();
+        driver.quit();
     }
 }

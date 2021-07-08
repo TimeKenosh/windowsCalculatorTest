@@ -59,4 +59,14 @@ public class StandardOperatorsTests extends BasicTest {
         String expectedResult = "10";
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test(description = "Add two numbers")
+    public void addTwoNumbersTest(){
+
+        String actualResult = new ClassicCalculatorPO(CalculatorSession).
+                addTwoNumbers("Один", "Шість").
+                getResult();
+        String expectedResult = "7";
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
